@@ -1,0 +1,15 @@
+/*Javier Carrasco Arango : UO294532*/
+/*Especificidad (0,0,1)*/
+body {
+    font-family: Verdana, Tahoma;
+    background-color: #96CEB4;
+    color: #844000;
+}
+/*Especificidad (0,0,1)*/
+header {
+    background-color: #FFEEAD;
+}
+/*Especificidad (0,0,1)*/
+h1,nav {
+    color: #442100;
+}
