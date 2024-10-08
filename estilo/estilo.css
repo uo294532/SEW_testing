@@ -1,9 +1,19 @@
 /*Javier Carrasco Arango : UO294532*/
+/***
+Gama cromática
+fondo página #E7F4EE
+fondo título #FFEEAD
+color texto #292929
+color menú #05282A
+***/
+/*Especificidad (0,0,1)*/
+html{
+    font-family: Verdana, Tahoma, sans-serif;
+}
 /*Especificidad (0,0,1)*/
 body {
-    font-family: Verdana, Tahoma;
-    background-color: #CEE9DD;
-    color: #180011;
+    background-color: #E7F4EE;
+    color: #292929;
 }
 /*Especificidad (0,0,1)*/
 header {
@@ -11,5 +21,69 @@ header {
 }
 /*Especificidad (0,0,1)*/
 h1,nav {
-    color: #442100;
+    color: #05282A;
+}
+/*Especificidad (0,0,1)*/
+h2,h3,h4,h5,h6{
+    color: #294429;
+}
+/*Especificidad (0,0,2)*/
+h1 > a{
+    padding: 0.3cap;
+    color:#05282A;
+    text-decoration: none;
+}
+/*Especificidad (0,0,2)*/
+header + p{
+    font-size: 0.7rem;
+}
+/*Especificidad (0,1,2)*/
+main a:link{
+    color:#292929;
+}
+/*Especificidad (0,1,2)*/
+main a:visited{
+    color: #0000FF;
+}
+/*Especificidad (0,1,2)*/
+main a:focus,main a:hover{
+    color:#0000FF;
+}
+/*Especificidad (0,0,2)*/
+ul > li{
+    list-style:square;
+}
+/*Especificidad (0,0,3)*/
+ol > li a{
+    font-size: 2cap;
+}
+/*Especificidad (0,0,2)*/
+dl dt, dl dd{
+    color: #690000;
+}
+/*Especificidad (0,0,1)*/
+table{
+    border: 3px solid;
+}
+/*Especificidad (0,0,1)*/
+th{
+    border: 2px solid;
+}
+/*Especificidad (0,0,1)*/
+video {
+    width:100%;
+    height:auto;
+}
+/*Especificidad (0,0,2)*/
+nav a{
+    color:#FFFFFF;
+    text-decoration: none;
+    background-color: #ba4a00;
+    border: 0.3cap solid #8e3900;
+    border-radius: 1.5cap;
+    padding: 1.5cap;
+}
+/*Especificidad (0,1,1)*/
+a.active{
+    background-color: #8e3900;
 }
