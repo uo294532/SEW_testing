@@ -12,12 +12,14 @@ html{
 }
 /*Especificidad (0,0,1)*/
 body {
+    margin: 0%;
     background-color: #E7F4EE;
     color: #292929;
 }
 /*Especificidad (0,0,1)*/
 header {
     background-color: #FFEEAD;
+    padding: 1% 2%;
 }
 /*Especificidad (0,0,1)*/
 h1,nav {
@@ -35,7 +37,12 @@ h1 > a{
 }
 /*Especificidad (0,0,2)*/
 header + p{
+    margin:1%;
     font-size: 0.7rem;
+}
+/*Especificidad (0,0,1)*/
+main{
+    margin:1%;
 }
 /*Especificidad (0,1,2)*/
 main a:link{
@@ -68,11 +75,6 @@ table{
 /*Especificidad (0,0,1)*/
 th{
     border: 2px solid;
-}
-/*Especificidad (0,0,1)*/
-video {
-    width:100%;
-    height:auto;
 }
 /*Especificidad (0,0,2)*/
 nav a{
