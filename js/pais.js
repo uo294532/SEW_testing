@@ -1,3 +1,4 @@
+'use strict'
 class País{
     constructor(nombre,capital,circuito,población,formaGobierno){
         this.nombre=nombre;
@@ -26,3 +27,11 @@ class País{
         document.write("<p>Coordenadas: "+this.latMeta+","+this.longMeta+"</p>");
     }
 }
+
+var pais = new País("China","Beijing","Shanghai International Circuit","1409670000","Unitary Marxist–Leninist one-party socialist republic");
+        pais.ponerMetaCircuito(30,30);
+        pais.religiónMayoritaria("Budismo")
+        document.write("<h2>"+pais.getNombrePaís()+"</h2>")
+        document.write("<h3>"+pais.getCapital()+"</h3>")
+        pais.escribeCoordenadas();
+        document.write(pais.getListaDetallesPaís());
