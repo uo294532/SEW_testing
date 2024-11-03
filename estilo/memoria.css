@@ -4,31 +4,40 @@ section{
     flex-direction: row;
     flex-wrap: wrap;
 }
+/*Especificidad (0,0,2)*/
+section header{
+    height: 100%;
+    width: 100%;
+}
 /*Especificidad (0,0,1)*/
 article{
     padding: 16.5% 11.5%;
     margin:1%;
     cursor: pointer;
     transform: scale(1);
-    transform-style: preserve-3d;
     transition: transform .5s;
-    background-color: #1c30cc;
+    background-color: #1C7CCC;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transform-style: preserve-3d;
 }
 /*Especificidad (0,0,2)*/
 article h3,article img{
+    transform-style: preserve-3d;
     position:absolute;
     text-align: center;
     margin: 0%;
-    border-radius: 1rem;
     backface-visibility: hidden;
+    border-radius: 1rem;
     width: 100%;
 }
+/*Especificidad (0,1,1)*/
+article[data-state=flip] {
+    transform: rotateY(180deg);
+}
 /*Especificidad (0,0,2)*/
-section header{
-    height: 100%;
-    width: 100%;
+article img{
+    transform: rotateY(180deg);
 }

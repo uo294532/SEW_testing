@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="author" content="Javier Carrasco"/>
-    <meta name="description" content="documento con la información del circuito de Shanghai"/>
-    <meta name="keywords" content ="F1,coches,fórmula uno" />
+    <meta name="description" content="documento con un juego de tiempo de reacción"/>
+    <meta name="keywords" content ="F1,coches,fórmula uno,juego f1, juego reacción" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-    <title>F1 Desktop-Circuito</title>
+    <title>F1 Desktop-Juegos-Semáforo</title>
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css"/>
     <link rel="stylesheet" type="text/css" href="estilo/layout.css"/>
+    <link rel="stylesheet" type="text/css" href="estilo/memoria.css"/>
+    <script src="js/semaforo.js"></script>
 </head>
 <body>
     <header>
@@ -20,12 +22,14 @@
             <a href="noticias.html">Noticias</a>
             <a href="calendario.html">Calendario</a>
             <a href="meteorología.html">Meteorología</a>
-            <a class="active" href="circuito.html">Circuito</a>
+            <a href="circuito.html">Circuito</a>
             <a href="viajes.html">Viajes</a>
-            <a href="juegos.html">Juegos</a>
+            <a class="active" href="juegos.html">Juegos</a>
         </nav>
     </header>
-    <p><a href="index.html">Inicio</a> > Circuito</p>
+    <p><a href="index.html">Inicio</a> > <a href="juegos.html" >Juegos</a> > Semáforo</p>
+    <main></main>
+    <script>
+        let semáforo=new Semáforo();
+    </script>
 </body>
-
-</html>

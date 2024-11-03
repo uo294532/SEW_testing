@@ -62,8 +62,24 @@ class Memoria{
     }
 
     addEventListeners(){
-        for (var i = 0; i <this.element.length; i++) {
-            this.unflipCard.bind(this.elements[i],this);
+        let nodes = document.querySelectorAll("article");
+        let func = function (article){article.onclick= this.flipCard.bind(article,this);};
+        nodes.forEach(func.bind(this));
+    }
+
+    flipCard(game){
+        if(this['data-state']=="revealed") return;
+        if(game.lockBoard==true) return;
+        if(this===game.firstCard) return;
+        this.setAttribute("data-state","flip");
+
+        if(!game.hasFlippedCard){
+            game.hasFlippedCard=true;
+            game.firstCard=this;
+        }else{
+            game.lockBoard=true;
+            game.secondCard=this;
+            setTimeout(game.checkForMatch.bind(game),1000);
         }
     }
 
@@ -77,7 +93,8 @@ class Memoria{
     }
     unflipCards(){
         this.lockBoard=true;
-        //TODO volteo tarjetas 
+        this.firstCard.removeAttribute('data-state');
+        this.secondCard.removeAttribute('data-state');
         this.resetBoard();
     }
     resetBoard(){
@@ -87,10 +104,11 @@ class Memoria{
         this.lockBoard=false;
     }
     checkForMatch(){
-        this.firstCard===this.secondCard?disableCards():this.unflipCards();
+        this.firstCard['data-element']===this.secondCard['data-element']?this.disableCards():this.unflipCards();
     }
     disableCards(){
-        this.firstCard;
+        this.firstCard['data-state']='revealed';
+        this.secondCard['data-state']='revealed';
         this.resetBoard();
     }
     createElements(){
@@ -100,6 +118,7 @@ class Memoria{
         section.appendChild(header);
         for(var i=0;i<this.elements.length;i++){
             let article= document.createElement("article");
+            article["data-element"]=this.elements[i].element;
             let heading= document.createElement("h3");
             heading.appendChild(document.createTextNode("Tarjeta de memoria"))
             let image= document.createElement("img");
