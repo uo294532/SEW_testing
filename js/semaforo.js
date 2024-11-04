@@ -14,7 +14,6 @@ class Semáforo{
         main.appendChild(h2);
         for(let i=0;i<this.lights;i++){
             let div = document.createElement("div");
-
             main.appendChild(div);
         }
         let button1 = document.createElement("button");
