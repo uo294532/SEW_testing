@@ -15,7 +15,6 @@ h2 {
 /*Especificidad (0,0,1)*/
 p {
     grid-column: 1 / -1;
-    text-align: center;
 }
 /*Especificidad (0,0,1)*/
 div {
@@ -49,10 +48,9 @@ main.load div:nth-of-type(3) {
 main.load div:nth-of-type(4) {
     animation: 0.5s lightSemaphore 1.5s forwards;
 }
-/*Especificidad (0,1,2)*/
-main.unload div{
-    animation-name: out;
-    animation-fill-mode: forwards;
+/*Especificidad (0,2,2)*/
+main.load.unload div{
+    animation: 0.1s out 0s forwards;
 }
 @keyframes lightSemaphore {
     from{

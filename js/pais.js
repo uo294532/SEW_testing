@@ -21,7 +21,7 @@ class País{
         return this.capital;
     }
     getListaDetallesPaís(){
-        return "<ul><li>"+this.nombreCircuito+"</li><li>"+this.población+"</li><li>"+this.formaGobierno+"</li><li>"+this.religión+"</li></ul>";
+        return "<ul><li>"+this.nombreCircuito+"</li><li>Población: "+this.población+"</li><li>"+this.formaGobierno+"</li><li>"+this.religión+"</li></ul>";
     }
     escribeCoordenadas(){
         document.write("<p>Coordenadas: "+this.latMeta+","+this.longMeta+"</p>");

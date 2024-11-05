@@ -46,10 +46,10 @@ class Semáforo{
     }
     stopReaction(){
         this.click_moment = new Date();
-        let reaction_time = this.click_moment.getMilliseconds() - this.unload_moment.getMilliseconds();
+        let reaction_time = this.click_moment - this.unload_moment;
         let main = document.querySelector("main");
         let paragraph = document.createElement("p");
-        paragraph.appendChild(document.createTextNode("Your reaction time was: "+reaction_time.toString()+" ms"));
+        paragraph.appendChild(document.createTextNode("Your reaction time was: "+reaction_time+" ms"));
         main.appendChild(paragraph);
         main.classList.remove("load");
         main.classList.remove("unload");
