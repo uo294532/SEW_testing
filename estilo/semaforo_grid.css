@@ -19,6 +19,7 @@ p {
 }
 /*Especificidad (0,0,1)*/
 div {
+    color: #000000;
     background-color: #000A;
     border: 5px solid #000000;
     aspect-ratio: 1;
@@ -48,6 +49,7 @@ main.load div:nth-of-type(3) {
 main.load div:nth-of-type(4) {
     animation: 0.5s lightSemaphore 1.5s forwards;
 }
+/*Especificidad (0,1,2)*/
 main.unload div{
     animation-name: out;
     animation-fill-mode: forwards;
