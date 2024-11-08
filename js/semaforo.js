@@ -9,9 +9,9 @@ class Semáforo{
     }
     createStructure(){
         let main = document.querySelector("main");
-        let h2 = document.createElement("h2");
-        h2.appendChild(document.createTextNode("Juego del semáforo"));
-        main.appendChild(h2);
+        let h3 = document.createElement("h3");
+        h3.appendChild(document.createTextNode("Juego del semáforo"));
+        main.appendChild(h3);
         for(let i=0;i<this.lights;i++){
             let div = document.createElement("div");
             main.appendChild(div);
