@@ -3,26 +3,10 @@ class Fondo{
         this.nombrePaís=nombrePaís;
         this.capital=capital;
         this.nombreCircuito=nombreCircuito;
-        //this.list = this.getImage();
-        this.image = this.getImage2();
+        this.image = this.getImage();
     }
     getImage(){
-        let flickrAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
-        let listSources=[];
-        $.getJSON(flickrAPI, 
-                {
-                    tags: "F1, "+this.nombreCircuito,
-                    format: "json"
-                }).done(function(data) {
-                    console.log(data);
-                    $.each(data.items, function(i,item ) {
-                        listSources[i]=item.media.m;
-                    });
-        });
-        return listSources;
-    }
-    getImage2(){
-        let searchAPI = "https://www.flickr.com/services/rest/?"
+        let searchAPI = "https://www.flickr.com/services/rest/?";
         let listSources=[];
         $.getJSON(searchAPI, 
                 {
@@ -36,9 +20,9 @@ class Fondo{
                     nojsoncallback:1
                 }).done(function(data) {
                     console.log(data);
-                    var image_back = "https://live.staticflickr.com/"+data.photos.photo[0].server+"/"+data.photos.photo[0].id+"_"+data.photos.photo[0].secret+"_b.jpg"
-                    
-                    $("body").css("background-image", 'url("'+image_back+'")').css("background-repeat","no-repeat").css("background-size","100%");
+                    var image_back = "https://live.staticflickr.com/"+data.photos.photo[0].server+"/"+data.photos.photo[0].id+"_"+data.photos.photo[0].secret+"_b.jpg";
+                    $("html").css("height","100%");
+                    $("body").css("background-image", "url('"+image_back+"')").css("background-repeat","no-repeat").css("height","100%").css("background-position","center").css("background-size","cover");
                     return;
         });
     }

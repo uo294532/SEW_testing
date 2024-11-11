@@ -1,0 +1,24 @@
+/*Especificidad (0,0,1)*/
+main{
+    display: flex;
+    flex-direction: row;
+}
+/*Especificidad (0,0,2)*/
+main article{
+    width: 18%;
+    border: 0.3rem solid #675345;
+    margin: 1%;
+    border-radius: 10%;
+    background-color: #FFEEAD;
+    text-align: center;
+}
+@media screen and (max-width: 810px){
+    /*Especificidad (0,0,1)*/
+    main{
+        flex-direction: column;
+    }
+    /*Especificidad (0,0,2)*/
+    main article{
+        width: 98%;
+    }
+}
