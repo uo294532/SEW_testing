@@ -19,7 +19,6 @@ class Fondo{
                     format: "json",
                     nojsoncallback:1
                 }).done(function(data) {
-                    console.log(data);
                     var image_back = "https://live.staticflickr.com/"+data.photos.photo[0].server+"/"+data.photos.photo[0].id+"_"+data.photos.photo[0].secret+"_b.jpg";
                     $("html").css("height","100%");
                     $("body").css("background-image", "url('"+image_back+"')").css("background-repeat","no-repeat").css("height","100%").css("background-position","center").css("background-size","cover");
