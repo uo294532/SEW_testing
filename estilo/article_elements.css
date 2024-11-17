@@ -2,12 +2,21 @@
 main{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+}
+/*Especificidad (0,0,1)*/
+label,input{
+    width:96%;
+}
+label,input,button{
+    margin:1%;
 }
 /*Especificidad (0,0,2)*/
 main article{
-    width: 18%;
+    flex-grow: 1;
+    width: 20%;
     border: 0.3rem solid #675345;
-    margin: 1%;
+    margin: 0.5%;
     border-radius: 10%;
     background-color: #FFEEAD;
     text-align: center;

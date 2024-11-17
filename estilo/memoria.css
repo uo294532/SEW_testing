@@ -1,9 +1,14 @@
 /*Javier Carrasco Arango : UO294532*/
 /*Especificidad (0,0,1)*/
 section{
+    width:50%;
+    margin:0% 25%;
+    border: 0.2cap solid #afafaf;
+    border-radius: 0.5cap;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
 }
 /*Especificidad (0,0,2)*/
 section header{
@@ -13,7 +18,9 @@ section header{
 /*Especificidad (0,0,1)*/
 article{
     padding: 16.5% 11.5%;
-    margin:1%;
+    margin:0.2em;
+    border: 0.1cap solid #176baf;
+    border-radius: 0.6cap;
     cursor: pointer;
     transform: scale(1);
     transition: transform .5s;
@@ -41,4 +48,11 @@ article[data-state=flip] {
 /*Especificidad (0,0,2)*/
 article img{
     transform: rotateY(180deg);
+}
+@media screen and (max-width: 900px){
+    section{
+        border: 0cap;
+        width:100%;
+        margin:0%;
+    }
 }

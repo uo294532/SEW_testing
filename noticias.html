@@ -10,6 +10,9 @@
     <title>F1 Desktop-Desktop</title>
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css"/>
     <link rel="stylesheet" type="text/css" href="estilo/layout.css"/>
+    <link rel="stylesheet" type="text/css" href="estilo/article_elements.css"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/noticias.js"></script>
 </head>
 <body>
     <header>
@@ -26,6 +29,17 @@
         </nav>
     </header>
     <p><a href="index.html">Inicio</a> > Noticias</p>
+    <label for="tituloNoticia">Titulo de la noticia: </label>
+    <input type="text" id="tituloNoticia" name="Titulo"/>
+    <label for="autorNoticia">Autor de la noticia: </label>
+    <input type="text" id="autorNoticia" name="Autor"/>
+    <label for="textNoticia">Cuerpo: </label>
+    <input type="text" id="textNoticia" name="Texto"/>
+    <button>Añadir noticia</button>
+    <input type="file"/>
+    <main>
+        <script>new Noticias();</script>
+    </main>
 </body>
 
 </html>
