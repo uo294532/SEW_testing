@@ -17,7 +17,7 @@ section header{
 }
 /*Especificidad (0,0,1)*/
 article{
-    padding: 16.5% 11.5%;
+    padding: 16.5% 11%;
     margin:0.2em;
     border: 0.1cap solid #176baf;
     border-radius: 0.6cap;
