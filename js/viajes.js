@@ -28,7 +28,7 @@ class Viajes{
             this.mensaje = "Se ha producido un error desconocido";
             break;
         }
-        $("main").prepend("<p>"+this.mensaje+"</p>");
+        $("body").append("<p>"+this.mensaje+"</p>");
     }
     verTodo(){
         let datos='<p>'+ this.mensaje + '</p>'; 
@@ -42,7 +42,7 @@ class Viajes{
         $("main").append(datos);
     }
     getMapaEstaticoGoogle(){
-        var ubicacion=$("main");
+        var ubicacion=$("body");
         var url = "https://maps.googleapis.com/maps/api/staticmap?";
         var centro = "center=" + this.latitud + "," + this.longitud;
         var zoom ="&zoom=15";
@@ -53,7 +53,7 @@ class Viajes{
         var apiKey="&key=AIzaSyB1Thy6jl0ZgBTk-DldSMQMAKbP0x-1AOg";
         
         this.imagenMapa = url + centro + zoom + tamaño + marcador + sensor + apiKey;
-        ubicacion.prepend("<img src='"+this.imagenMapa+"' alt='mapa estático google' />");
+        ubicacion.append("<img src='"+this.imagenMapa+"' alt='mapa estático google' />");
     }
     initMap(){  
         var centro = {lat: 43.3672702, lng: -5.8502461};

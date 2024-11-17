@@ -1,11 +1,14 @@
 class Semáforo{
     levels=[0.2,0.5,0.8];
     constructor(){
-        this.difficulty=this.levels[Math.floor(Math.random()*3)];
+        this.changeDifficulty();
         this.lights=4;
         this.unload_moment=null;
         this.click_moment=null;
         this.createStructure();
+    }
+    changeDifficulty(){
+        this.difficulty= this.levels[Math.floor(Math.random()*3)];
     }
     createStructure(){
         let main = document.querySelector("main");
@@ -29,6 +32,8 @@ class Semáforo{
         main.appendChild(button2);
     }
     initSequence(){
+        this.changeDifficulty();
+        console.log(this.difficulty);
         let main = document.querySelector("main");
         main.classList.add("load");
         let button = document.querySelector("button");
@@ -36,7 +41,7 @@ class Semáforo{
         setTimeout(()=>{
             this.unload_moment=new Date();
             this.endSequence();
-        },(this.difficulty*100)+1500);
+        },(this.difficulty*1000)+2000);
     }
     endSequence(){
         let button2 = document.querySelector("button:nth-of-type(2)");
