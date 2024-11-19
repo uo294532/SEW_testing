@@ -56,30 +56,31 @@ class Viajes{
         ubicacion.append("<img src='"+this.imagenMapa+"' alt='mapa estático google' />");
     }
     initMap(){  
-        var centro = {lat: 43.3672702, lng: -5.8502461};
-        var mapaGeoposicionado = new google.maps.Map(document.getElementsByTagName('div')[0],{
-            zoom: 8,
-            center:centro,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-        
-        var infoWindow = new google.maps.InfoWindow;
+        var infoWindow = new google.maps.InfoWindow({});
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
                 var pos = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
+                var mapaDinámico = new google.maps.Map(document.getElementsByTagName('div')[0],{
+                    zoom: 8,
+                    center:pos,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    zoomControl: true,
+                    scaleControl:true,
+                    fullscreenControl:true
+                });
                 infoWindow.setPosition(pos);
                 infoWindow.setContent('Localización encontrada');
-                infoWindow.open(mapaGeoposicionado);
-                mapaGeoposicionado.setCenter(pos);
+                infoWindow.open(mapaDinámico);
+                mapaDinámico.setCenter(pos);
             }, function() {
-                this.handleLocationError(true, infoWindow, mapaGeoposicionado.getCenter());
+                this.handleLocationError(true, infoWindow, pos);
             });
         } else {
             // Browser doesn't support Geolocation
-            this.handleLocationError(false, infoWindow, mapaGeoposicionado.getCenter());
+            this.handleLocationError(false, infoWindow, mapaDinámico.getCenter());
         }
     }
     handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -87,6 +88,6 @@ class Viajes{
         infoWindow.setContent(browserHasGeolocation ?
                                 'Error: Ha fallado la geolocalización' :
                                 'Error: Su navegador no soporta geolocalización');
-        infoWindow.open(mapaGeoposicionado);
+        infoWindow.open(this.mapaDinámico);
     }
 }

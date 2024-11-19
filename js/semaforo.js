@@ -33,7 +33,6 @@ class Semáforo{
     }
     initSequence(){
         this.changeDifficulty();
-        console.log(this.difficulty);
         let main = document.querySelector("main");
         main.classList.add("load");
         let button = document.querySelector("button");
@@ -53,9 +52,10 @@ class Semáforo{
         this.click_moment = new Date();
         let reaction_time = this.click_moment - this.unload_moment;
         let main = document.querySelector("main");
-        let paragraph = document.createElement("p");
-        paragraph.appendChild(document.createTextNode("Your reaction time was: "+reaction_time+" ms"));
-        main.appendChild(paragraph);
+        if(this.paragraph!==undefined)main.removeChild(this.paragraph);
+        this.paragraph = document.createElement("p");
+        this.paragraph.appendChild(document.createTextNode("Your reaction time was: "+reaction_time+" ms"));
+        main.appendChild(this.paragraph);
         main.classList.remove("load");
         main.classList.remove("unload");
         let begin = document.querySelector("button");
