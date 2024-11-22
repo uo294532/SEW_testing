@@ -28,11 +28,13 @@
         </nav>
     </header>
     <p><a href="index.html">Inicio</a> > Viajes</p>
-    <div id="map"></div>
+    <main>
+        <div id="map"></div>
+    </main>
     <script>
         var viajes = new Viajes();
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1Thy6jl0ZgBTk-DldSMQMAKbP0x-1AOg&loading=async&callback=viajes.initMap"></script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1Thy6jl0ZgBTk-DldSMQMAKbP0x-1AOg&loading=async&libraries=maps,marker&callback=viajes.initMap"></script>
 </body>
 
 </html>

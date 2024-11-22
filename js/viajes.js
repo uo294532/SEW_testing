@@ -28,7 +28,7 @@ class Viajes{
             this.mensaje = "Se ha producido un error desconocido";
             break;
         }
-        $("body").append("<p>"+this.mensaje+"</p>");
+        $("main").append("<p>"+this.mensaje+"</p>");
     }
     verTodo(){
         let datos='<p>'+ this.mensaje + '</p>'; 
@@ -42,7 +42,7 @@ class Viajes{
         $("main").append(datos);
     }
     getMapaEstaticoGoogle(){
-        var ubicacion=$("body");
+        var ubicacion=$("main");
         var url = "https://maps.googleapis.com/maps/api/staticmap?";
         var centro = "center=" + this.latitud + "," + this.longitud;
         var zoom ="&zoom=15";
@@ -53,6 +53,7 @@ class Viajes{
         var apiKey="&key=AIzaSyB1Thy6jl0ZgBTk-DldSMQMAKbP0x-1AOg";
         
         this.imagenMapa = url + centro + zoom + tamaño + marcador + sensor + apiKey;
+        ubicacion.append("<h2>Posición actual:</h2>")
         ubicacion.append("<img src='"+this.imagenMapa+"' alt='mapa estático google' />");
     }
     initMap(){  
@@ -69,7 +70,12 @@ class Viajes{
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
                     zoomControl: true,
                     scaleControl:true,
-                    fullscreenControl:true
+                    fullscreenControl:true,
+                    mapId:"DYNAMIC_MAP"
+                });
+                new google.maps.marker.AdvancedMarkerElement({
+                    map:mapaDinámico,
+                    position: pos,
                 });
                 infoWindow.setPosition(pos);
                 infoWindow.setContent('Localización encontrada');
