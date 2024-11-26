@@ -20,7 +20,7 @@ class Svg(object):
         tree.write(fileName, encoding='utf-8', xml_declaration=True)
 
 def main():
-    height = 1000
+    height = 800
     multiplier=100
     fileName = input("Introduzca el nombre del archivo .xml    = ")
 
@@ -37,20 +37,20 @@ def main():
 
     namespace={'xs':'http://www.uniovi.es'}
     circuitAltitudes = "10,"+str(height*0.75)+" 10,"+str(height-float(root.find('.//xs:tramos[last()]//xs:altitud',namespace).text)*multiplier)
-    distance = 10.0
+    x = 10.0
     for coord in root.findall('.//xs:tramo',namespace):
         nodeDistance=coord.find('xs:distancia',namespace)
         if(nodeDistance.get("unidades") != "m"):
             print("Error: las distancias de tramos deben estar en metros")
             exit()
         circuitAltitudes+=" "
-        distance+=float(nodeDistance.text)*0.1
-        circuitAltitudes+=str(distance)
+        x+=float(nodeDistance.text)*0.1
+        circuitAltitudes+=str(x)
         altitud = height - float(coord.find('./xs:coordenadas/xs:altitud',namespace).text)*multiplier
         circuitAltitudes+=","+str(altitud)
-    circuitAltitudes+=" "+str(distance)+","+str(height*0.75)+" 10,"+str(height*0.75)
+    circuitAltitudes+=" "+str(x)+","+str(height*0.75)+" 10,"+str(height*0.75)
 
-    width = distance +10
+    width = x +10
     
     newSvg.addPolyline(circuitAltitudes,"green","5")
 

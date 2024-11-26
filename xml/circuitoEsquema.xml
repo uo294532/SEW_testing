@@ -19,12 +19,12 @@ xmlns:xsi="http://www.w5.org/2001/XMLSchema-instance" xmlns="http://www.uniovi.e
             <referencia>https://www.randymajors.org/elevation-on-google-maps</referencia>
         </bibliografía>
         <fotografías>
-            <foto>China_Circuit.png</foto>
-            <foto>Shanghai_Hairpin.png</foto>
-            <foto>Shanghai_Start.png</foto>
+            <foto>http://localhost/F1Desktop/xml/China_Circuit.png</foto>
+            <foto>http://localhost/F1Desktop/xml/Shanghai_Hairpin.png</foto>
+            <foto>http://localhost/F1Desktop/xml/Shanghai_Start.png</foto>
         </fotografías>
         <vídeos>
-            <vídeo>Verstappen vs Vettel At The Hairpin - Chinese Grand Prix.mp4</vídeo>    
+            <vídeo>http://localhost/F1Desktop/xml/Verstappen_vs_Vettel_At_The_Hairpin_-_Chinese_Grand_Prix.mp4</vídeo>    
         </vídeos>
         <coordenadas>
             <longitud>121.2202777777778</longitud>
