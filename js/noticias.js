@@ -7,7 +7,7 @@ class Noticias{
         let createNoticia=(function () {
             console.log(this);
             let title=$("input[name='Titulo']").val();
-            let text=$("input[name='Texto']").val();
+            let text=$("textarea[name='Texto']").val();
             let author=$("input[name='Autor']").val();
             this.createNoticia(title,text,author);
         }).bind(this);
@@ -15,7 +15,7 @@ class Noticias{
     }
     createNoticia(title,text,author){
         title=$("<h3></h3>").append(title);
-        text=$("<p></p>").append(text);
+        text=$("<pre></pre>").append(text);
         author=$("<p></p>").append("Escrito por: "+author);
         let article = $("<article></article>").append(title,text,author);
         $("main").append(article);

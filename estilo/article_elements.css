@@ -5,10 +5,11 @@ main{
     flex-wrap: wrap;
 }
 /*Especificidad (0,0,1)*/
-label,input{
+label,input,textarea{
     width:96%;
 }
-label,input,button{
+/*Especificidad (0,0,1)*/
+label,input,textarea,button{
     margin:1%;
 }
 /*Especificidad (0,0,2)*/

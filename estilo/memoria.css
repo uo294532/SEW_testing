@@ -11,9 +11,11 @@ section{
     justify-content: center;
 }
 /*Especificidad (0,0,2)*/
-section header{
+section > h3{
     height: 100%;
     width: 100%;
+    background-color: #FFEEAD;
+    padding: 1% 2%;
 }
 /*Especificidad (0,0,1)*/
 article{

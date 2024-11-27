@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="author" content="Javier Carrasco"/>
-    <meta name="description" content="documento con un juego de tiempo de reacción"/>
-    <meta name="keywords" content ="F1,coches,fórmula uno,juego f1, juego reacción" />
+    <meta name="description" content="documento con un juego de memoria de formar parejas con cartas"/>
+    <meta name="keywords" content ="F1,coches,fórmula uno" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-    <title>F1 Desktop-Juegos-Semáforo</title>
+    <title>F1 Desktop-Juegos-Memoria</title>
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css"/>
     <link rel="stylesheet" type="text/css" href="estilo/layout.css"/>
-    <link rel="stylesheet" type="text/css" href="estilo/semaforo_grid.css"/>
-    <script src="js/semaforo.js"></script>
+    <link rel="stylesheet" type="text/css" href="estilo/memoria.css"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/api.js"></script>
 </head>
 <body>
     <header>
@@ -27,15 +28,13 @@
             <a class="active" href="juegos.html">Juegos</a>
         </nav>
     </header>
-    <p><a href="index.html">Inicio</a> > <a href="juegos.html" >Juegos</a> > Semáforo</p>
+    <p><a href="index.html">Inicio</a> > <a href="juegos.html" >Juegos</a> > Memoria</p>
     <h2>Juegos disponibles:</h2>
     <ul>
-        <li><a href="memoria.html">Juego de memoria</a></li>
-        <li><a href="semaforo.html">Juego de reacción</a></li>
-        <li><a href="api.html">Juego de escritura</a></li>
+    <li><a href="memoria.html">Juego de memoria</a></li>
+    <li><a href="semaforo.html">Juego de reacción</a></li>
+    <li><a href="api.html">Juego de escritura</a></li>
     </ul>
-    <main></main>
-    <script>
-        let semáforo=new Semáforo();
-    </script>
+    <h3>Comprueba tu velocidad de escritura:</h3>
+    <script>var typeracer = new TypeRacer()</script>
 </body>

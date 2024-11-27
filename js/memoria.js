@@ -113,7 +113,7 @@ class Memoria{
     }
     createElements(){
         let section = document.createElement("section");
-        let header = document.createElement("header");
+        let header = document.createElement("h3");
         header.appendChild(document.createTextNode("Juego de Memoria"));
         section.appendChild(header);
         for(var i=0;i<this.elements.length;i++){

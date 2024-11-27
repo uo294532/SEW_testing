@@ -34,7 +34,7 @@ class Circuito{
         if(file.type.match('.\.svg')){
             var lector = new FileReader();
             lector.onload = function (evento) {
-                $("main").append(lector.result);
+                $("main").append($(lector.result).attr("preserveAspectRatio","xMinYMin slice").attr("viewBox","0 0 1000 1000"));
             }
             lector.readAsText(file);
         }else{
@@ -45,7 +45,6 @@ class Circuito{
         var lector = new FileReader();
         lector.onload = function (evento) {
             var xmlText =$.parseXML(lector.result);
-            console.log(xmlText);
             var name=$("<h2></h2>").append($("nombre",xmlText));
             var location="<p>"+$("localidad",xmlText).text()+", "+$("país",xmlText).text()+"</p>";
             var coordsC = $("coordenadas",xmlText)[0];
@@ -66,7 +65,7 @@ class Circuito{
                 var extension = $(domObject).text().split('.');
                 vídeos.append('<video controls><source src="'+$(domObject).text()+'" type="video/'+extension[extension.length-1]+'"/></video>');
             });
-            var bibliografía=$("<ul></ul>");
+            var bibliografía=$("<ul>Bibliografía:</ul>");
             $("bibliografía referencia",xmlText).each(function(index,domObject) {
                 var ref = $(domObject).text();
                 bibliografía.append("<li><a href='"+ref+"'>"+ref+"</a></li>");
