@@ -22,6 +22,7 @@ body {
 header {
     background-color: #FFEEAD;
     padding: 1% 2%;
+    align-items: center;
 }
 /*Especificidad (0,0,1)*/
 h1,nav {
@@ -89,6 +90,7 @@ nav a{
     border-radius: 1.5cap;
     padding: 1cap;
     margin: 0.2cap;
+    line-height: 1.5em;
 }
 /*Especificidad (0,1,1)*/
 a.active{
@@ -128,5 +130,5 @@ canvas{
     border:1px solid #000000;
 }
 button{
-    margin:0 0.5rem;
+    margin:0.5rem 0.5rem;
 }

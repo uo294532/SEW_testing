@@ -58,7 +58,30 @@ class Memoria{
         this.secondCard=null;
         this.shuffleElements();
         this.createElements();
+        this.addHelp();
         this.addEventListeners();
+    }
+    addHelp(){
+        let section = document.querySelector("body section");
+        let helpButton = document.createElement("button");
+        helpButton.textContent="Cómo jugar?";
+        helpButton.onclick=this.showHelp.bind(this);
+        section.appendChild(helpButton);
+    }
+    showHelp(){
+        let dialog = document.querySelector("dialog");
+        if(dialog===null){
+            dialog=document.createElement("dialog");
+            let help = document.createElement("p");
+            help.textContent="para completar el juego, pulsa las tarjetas para darles la vuelta, y haz todas las parejas. Solo puedes tener dos bocarriba al mismo tiempo, asi que recuérdalas bien!";
+            dialog.appendChild(help);
+            let dialogButton=document.createElement("button");
+            dialogButton.textContent="Close";
+            dialog.appendChild(dialogButton);
+            document.body.appendChild(dialog);
+            document.querySelector("dialog button").onclick=() => document.querySelector("dialog").close();
+        }
+        dialog.showModal();
     }
 
     addEventListeners(){
@@ -119,12 +142,12 @@ class Memoria{
         for(var i=0;i<this.elements.length;i++){
             let article= document.createElement("article");
             article["data-element"]=this.elements[i].element;
-            let heading= document.createElement("h3");
-            heading.appendChild(document.createTextNode("Tarjeta de memoria"))
+            let title= document.createElement("h3");
+            title.appendChild(document.createTextNode("Tarjeta de memoria"))
             let image= document.createElement("img");
             image.src=this.elements[i].source;
             image.alt=this.elements[i].element;
-            article.appendChild(heading);
+            article.appendChild(title);
             article.appendChild(image);
             section.appendChild(article);
         }

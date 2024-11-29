@@ -24,10 +24,6 @@ video {
 }
 
 @media screen and (max-width: 465px){
-    /*Especificidad (0,0,1)*/
-    header,nav{
-        flex-direction: column;
-    }
     /*Especificidad (0,0,2)*/
     header + p{
         display:none;

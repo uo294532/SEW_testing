@@ -49,7 +49,7 @@ class País{
                 let article ={};
                 article.day = (new Date($(this).attr("from"))).getDay();
                 article.image=$("<img>");
-                article.image.attr("src","https://openweathermap.org/img/wn/"+$("symbol",this).attr("var")+"@2x.png");
+                article.image.attr("src","https://openweathermap.org/img/wn/"+$("symbol",this).attr("var")+"@2x.png").attr("alt","imagen del tiempo");
                 article.minTemp= $("<p></p>").append("Temperatura mínima: "+$("temperature",this).attr("min")+"º");
                 article.maxTemp= $("<p></p>").append("Temperatura máxima: "+$("temperature",this).attr("max")+"º");
                 article.humedad = Number($("humidity",this).attr("value"));
