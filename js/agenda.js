@@ -10,9 +10,9 @@ class Agenda{
             method:"GET",
             success: function(object){
                 let json = object.MRData;
-                $("main").remove();
+                let main = $("main");
+                main.empty();
                 $("h2").remove();
-                let main = $("<main></main>");
                 let image= "<img src=multimedia/imagenes/raceIcon.png alt=Race icon/>";
                 json.RaceTable.Races.forEach(race => {
                     let date = new Date(race.date+"T"+race.time.replace('Z',''));
@@ -24,7 +24,6 @@ class Agenda{
                     main.append($("<article></article>").append(fecha,image,hora,nomCarrera,nomCircuito,coordenadas));
                 });
                 main.prepend($("<h2></h2>").append("Carreras para la temporada de "+json.RaceTable.season));
-                $("body").append(main);
             }
         })
     }

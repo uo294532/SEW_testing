@@ -1,10 +1,6 @@
 /*Javier Carrasco Arango : UO294532*/
 /*Especificidad (0,0,1)*/
 section{
-    width:50%;
-    margin:0% 25%;
-    border: 0.2cap solid #afafaf;
-    border-radius: 0.5cap;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

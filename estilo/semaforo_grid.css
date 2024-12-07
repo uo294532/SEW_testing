@@ -3,10 +3,9 @@
 main{
     display: grid;
     grid-template-columns: repeat(4, 22.5%);
-    grid-template-rows: 0.1fr 1fr 0.3fr;
-    gap: 7% 3%;
+    grid-template-rows: 0.1fr 1fr 0.3fr 0.1fr 1fr;
+    gap: 3%;
     align-items: center;
-    margin-bottom: 7em;
 }
 /*Especificidad (0,0,1)*/
 h3 {
@@ -50,6 +49,30 @@ main.load div:nth-of-type(3) {
 /*Especificidad (0,2,2)*/
 main.load div:nth-of-type(4) {
     animation: 0.5s lightSemaphore 1.5s forwards;
+}
+/*Especificidad (0,0,2)*/
+main form,main ol{
+    grid-row: 5;
+    grid-column: 2/4;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+/*Especificidad (0,0,2)*/
+ol li{
+    width:100%;
+}
+/*Especificidad (0,1,1)*/
+input[type='text']{
+    flex-grow: 1;
+}
+/*Especificidad (0,1,1)*/
+input[type='submit']{
+    width: 100%;
+}
+/*Especificidad (0,0,1)*/
+label{
+    width:50%;
 }
 /*Especificidad (0,2,2)*/
 main.load.unload div{

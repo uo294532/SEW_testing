@@ -9,6 +9,7 @@ color menú #05282A
 /*Especificidad (0,0,1)*/
 html{
     font-family: Verdana, Tahoma, sans-serif;
+    height: 100%;
 }
 /*Especificidad (0,0,1)*/
 body {
@@ -17,6 +18,27 @@ body {
     margin: 0%;
     background-color: #E7F4EE;
     color: #292929;
+}
+/*Especificidad (0,0,1)*/
+footer{
+    width: 100vw;
+    background-color: #000000;
+    opacity: 0.5;
+    color: #FFFFFF;
+}
+/*Especificidad (0,0,1)*/
+section{
+    width: 50%;
+    margin: 0% 25%;
+    border: 0.2cap solid #afafaf;
+    border-radius: 0.5cap;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+table{
+    width: 100%;
 }
 /*Especificidad (0,0,1)*/
 header {
@@ -31,6 +53,8 @@ h1,nav {
 /*Especificidad (0,0,1)*/
 h2,h3,h4,h5,h6{
     color: #294429;
+    width:98%;
+    margin:1%;
 }
 /*Especificidad (0,0,2)*/
 h1 > a{
@@ -46,7 +70,6 @@ header + p{
 /*Especificidad (0,0,1)*/
 main{
     width:95%;
-    height: 100%;
     margin:1%;
 }
 /*Especificidad (0,1,2)*/

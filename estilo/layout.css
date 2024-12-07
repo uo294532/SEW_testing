@@ -17,6 +17,13 @@ nav a{
     flex:5;
     text-align: center;
 }
+body{
+    display: flex;
+    flex-direction: column;
+}
+main{
+    flex-grow: 1;
+}
 /*Especificidad (0,0,1)*/
 video {
     width:50%;

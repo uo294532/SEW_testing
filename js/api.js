@@ -32,10 +32,13 @@ class TypeRacer{
         $("main").empty();
         $("main").append("<canvas width='"+document.querySelector("main").clientWidth+"' ></canvas>")
         $("main").append("<p oncopy='return false'>"+this.toTypeText+"</p>");
-        $("main").append("<textarea autofocus name='typed' rows='10'></textarea>");
+        $("main").append("<textarea autofocus disabled name='typed' rows='10'></textarea>");
         $("textarea[name='typed']").on("input propertychange",this.updateAreas.bind(this));
-        this.beginTime=new Date();
         this.setupCanvas();
+    }
+    begin(){
+        this.beginTime=new Date();
+        $("textarea[name='typed']").removeAttr("disabled");
     }
     setupCanvas(){
         this.img = new Image();
@@ -44,6 +47,7 @@ class TypeRacer{
         this.img.addEventListener("load", () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(this.img, 0, 0,canvas.height,canvas.height);
+            this.begin();
         });
         this.img.src = "multimedia/imagenes/f1Car.png";
     }
@@ -92,14 +96,16 @@ class TypeRacer{
         if(this.correctLetters!==this.toTypeText.length)
             return;
         this.endTime=new Date();
-        let time = ((this.endTime-this.beginTime)/1000);
+        let time = ((this.endTime-this.beginTime)/1000).toFixed(3);
         let lastTime= localStorage.getItem(this.textName);
         localStorage.setItem(this.textName,time);
         $("main").empty();
         $("main").append("<p>Enhorabuena!</p><p>Tu tiempo fue: "+time+" segundos</p>");
+        let wpm = (this.toTypeText.split(" ").length/(time/60)).toFixed(2);
+        $("main").append("<p>Palabras por minuto: "+wpm+"</p>");
         if(lastTime!=null){
             lastTime=Number(lastTime)
-            let comparacion=lastTime>time?"mejorado "+(lastTime-time):"empeorado "+(time-lastTime);
+            let comparacion=lastTime>time?"mejorado "+(lastTime-time).toFixed(2):"empeorado "+(time-lastTime).toFixed(2);
             $("main").append("<p>Has "+comparacion+" segundos respecto al último intento.</p>");
         }
         $("button").removeAttr('disabled');

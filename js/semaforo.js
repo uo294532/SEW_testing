@@ -50,17 +50,33 @@ class Semáforo{
     }
     stopReaction(){
         this.click_moment = new Date();
-        let reaction_time = this.click_moment - this.unload_moment;
+        this.reaction_time = ((this.click_moment - this.unload_moment)/1000);
         let main = document.querySelector("main");
-        if(this.paragraph!==undefined)main.removeChild(this.paragraph);
-        this.paragraph = document.createElement("p");
-        this.paragraph.appendChild(document.createTextNode("Your reaction time was: "+reaction_time+" ms"));
-        main.appendChild(this.paragraph);
+        if(this.played===true){
+            main.removeChild(document.querySelector("main > p"));
+            main.removeChild(document.querySelector("main form"));
+            main.removeChild(document.querySelector("ol"));
+        }else{
+            this.played=true;
+        }
+        let paragraph = document.createElement("p");
+        paragraph.appendChild(document.createTextNode("Your reaction time was: "+this.reaction_time+" s"));
+        main.appendChild(paragraph);
         main.classList.remove("load");
         main.classList.remove("unload");
         let begin = document.querySelector("button");
         let reaction = document.querySelector("button:nth-of-type(2)");
         begin.removeAttribute("disabled");
         reaction.setAttribute("disabled","disabled");
+        this.createRecordForm();
+    }
+    createRecordForm(){
+        let form = $("<form action='#' method='post' name='recordSaving'><form>");
+        form.append("<label for='formName'>Nombre:</label><input id='formName' type='text' name='nombre'/>");
+        form.append("<label for='formApellidos'>Apellidos:</label><input id='formApellidos' type='text' name='apellidos'/>");
+        form.append("<label for='formDiff'>Nivel completado:</label><input id='formDiff' type='text' value='"+this.difficulty+"' readonly name='nivel'/>");
+        form.append("<label for='formTime'>Tiempo de reacción:</label><input id='formTime' type='text' value='"+this.reaction_time+"' readonly name='tiempo'/>");
+        form.append("<input type='submit' value='enviar'/>");
+        $("main").append(form);
     }
 }

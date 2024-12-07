@@ -8,10 +8,6 @@ main{
 label,input,textarea{
     width:96%;
 }
-/*Especificidad (0,0,1)*/
-label,input,textarea,button{
-    margin:1%;
-}
 /*Especificidad (0,0,2)*/
 main article{
     flex-grow: 1;

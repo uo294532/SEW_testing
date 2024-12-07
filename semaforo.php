@@ -1,5 +1,46 @@
-<!DOCTYPE HTML>
+<?php 
+class Record{
+    protected $server;
+    protected $user;
+    protected $pass;
+    protected $dbname;
 
+    public function __construct(){
+        $this->server = "localhost";
+        $this->user = "DBUSER2024";
+        $this->pass = "DBPSWD2024";
+        $this->dbname = "records";
+    }
+
+    public function sendRecord(){
+        if(count($_POST)>0){
+            $database = new mysqli($this->server,$this->user,$this->pass,$this->dbname);
+            $insert = sprintf("INSERT INTO registro (nombre,apellidos,nivel,tiempo) VALUES ('%s','%s','%f','%f')",$_POST["nombre"],$_POST["apellidos"],$_POST["nivel"],$_POST["tiempo"]);
+            if($database->query($insert)===FALSE){
+                echo "An error occurred when sending the record to the database.";
+            }
+            $database->close();
+        }
+    }
+    public function showTopTen(){
+        if(count($_POST)>0){
+            $database = new mysqli($this->server,$this->user,$this->pass,$this->dbname);
+            $select = sprintf("SELECT * FROM registro WHERE nivel=%f ORDER BY tiempo ASC LIMIT 10",$_POST["nivel"]);
+            $result = $database->query($select);
+            if ($result->num_rows > 0) {
+                echo "<ol>Mejores resultados para la dificultad ".$_POST["nivel"].":";
+                $rows = $result->fetch_all(MYSQLI_BOTH);
+                foreach ($rows as $row){
+                    echo sprintf("<li>%s %s - %g</li>",$row["nombre"],$row["apellidos"],$row["tiempo"]);
+                }
+                echo "</ol>";
+            }
+            $database->close();
+        }
+    }
+}
+?>
+<!DOCTYPE HTML>
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
@@ -11,6 +52,7 @@
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css"/>
     <link rel="stylesheet" type="text/css" href="estilo/layout.css"/>
     <link rel="stylesheet" type="text/css" href="estilo/semaforo_grid.css"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="js/semaforo.js"></script>
 </head>
 <body>
@@ -34,8 +76,17 @@
         <li><a href="semaforo.php">Juego de reacción</a></li>
         <li><a href="api.html">Juego de escritura</a></li>
     </ul>
-    <main></main>
-    <script>
-        let semáforo=new Semáforo();
-    </script>
+    <main>
+        <script>
+            let semáforo=new Semáforo();
+        </script>
+        <?php
+        $record = new Record();
+        $record -> sendRecord();
+        $record -> showTopTen();
+        ?>
+    </main>
+    <footer>
+        <p>Javier Carrasco Arango, Universidad de Oviedo</p>
+    </footer>
 </body>
