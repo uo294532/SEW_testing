@@ -65,7 +65,7 @@ class Record{
             <a href="calendario.html">Calendario</a>
             <a href="meteorología.html">Meteorología</a>
             <a href="circuito.html">Circuito</a>
-            <a href="viajes.html">Viajes</a>
+            <a href="viajes.php">Viajes</a>
             <a class="active" href="juegos.html">Juegos</a>
         </nav>
     </header>

@@ -58,21 +58,25 @@ class Viajes{
     }
     initMap(){  
         var infoWindow = new google.maps.InfoWindow({});
+        var pos = {
+            lat: 0,
+            lng: 0
+        }
+        var mapaDinámico = new google.maps.Map(document.getElementsByTagName('div')[0],{
+            zoom: 8,
+            center:pos,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            zoomControl: true,
+            scaleControl:true,
+            fullscreenControl:true,
+            mapId:"DYNAMIC_MAP"
+        });
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
-                var pos = {
+                pos = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
-                var mapaDinámico = new google.maps.Map(document.getElementsByTagName('div')[0],{
-                    zoom: 8,
-                    center:pos,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP,
-                    zoomControl: true,
-                    scaleControl:true,
-                    fullscreenControl:true,
-                    mapId:"DYNAMIC_MAP"
-                });
                 new google.maps.marker.AdvancedMarkerElement({
                     map:mapaDinámico,
                     position: pos,
@@ -82,18 +86,18 @@ class Viajes{
                 infoWindow.open(mapaDinámico);
                 mapaDinámico.setCenter(pos);
             }, function() {
-                this.handleLocationError(true, infoWindow, pos);
+                viajes.handleLocationError(true, infoWindow,  mapaDinámico);
             });
         } else {
             // Browser doesn't support Geolocation
-            this.handleLocationError(false, infoWindow, mapaDinámico.getCenter());
+            viajes.handleLocationError(false, infoWindow, mapaDinámico);
         }
     }
-    handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
+    handleLocationError(browserHasGeolocation, infoWindow, mapaDinámico) {
+        infoWindow.setPosition(mapaDinámico.getCenter());
         infoWindow.setContent(browserHasGeolocation ?
                                 'Error: Ha fallado la geolocalización' :
                                 'Error: Su navegador no soporta geolocalización');
-        infoWindow.open(this.mapaDinámico);
+        infoWindow.open(mapaDinámico);
     }
 }

@@ -73,7 +73,7 @@ class Memoria{
         if(dialog===null){
             dialog=document.createElement("dialog");
             let help = document.createElement("p");
-            help.textContent="para completar el juego, pulsa las tarjetas para darles la vuelta, y haz todas las parejas. Solo puedes tener dos bocarriba al mismo tiempo, asi que recuérdalas bien!";
+            help.textContent="Para completar el juego, pulsa las tarjetas para darles la vuelta, y haz todas las parejas. Solo puedes tener dos bocarriba al mismo tiempo, asi que recuérdalas bien!";
             dialog.appendChild(help);
             let dialogButton=document.createElement("button");
             dialogButton.textContent="Close";

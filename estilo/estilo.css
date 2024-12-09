@@ -18,12 +18,13 @@ body {
     margin: 0%;
     background-color: #E7F4EE;
     color: #292929;
+    display: flex;
+    flex-direction: column;
 }
 /*Especificidad (0,0,1)*/
 footer{
     width: 100vw;
     background-color: #000000;
-    opacity: 0.5;
     color: #FFFFFF;
 }
 /*Especificidad (0,0,1)*/
@@ -71,6 +72,7 @@ header + p{
 main{
     width:95%;
     margin:1%;
+    flex-grow: 1;
 }
 /*Especificidad (0,1,2)*/
 main a:link{
@@ -140,6 +142,11 @@ svg{
     height:100%;
 }
 /*Especificidad (0,0,1)*/
+video {
+    width:50%;
+    height:auto;
+}
+/*Especificidad (0,0,1)*/
 del{
     background-color: #ffbbbb;
 }
@@ -154,4 +161,20 @@ canvas{
 }
 button{
     margin:0.5rem 0.5rem;
+}
+div+section{
+    position:relative;
+    overflow: hidden;
+    height:70vh;
+    box-sizing: border-box;
+}
+div+section h3{
+    text-align: center;
+}
+div+section img{
+    width: 100%;
+    max-width: 100vh;
+    object-fit: cover;
+    position:absolute;
+    padding: 2.3em;
 }

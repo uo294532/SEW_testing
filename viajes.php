@@ -1,0 +1,81 @@
+<?php
+class Carrusel{
+    protected $capital;
+    protected $país;
+    protected $photos;
+
+    public function __construct(String $capital, String $país){
+        $this->capital=$capital;
+        $this->país=$país;
+    }
+
+    public function getTenPhotos(){
+        $params = array(
+            urlencode("method").'='.urlencode("flickr.photos.search"),
+            urlencode("api_key").'='.urlencode("06b2e3d3d6063508659b67608583e7ed"),
+            urlencode("text").'='.urlencode($this->país.",".$this->capital),
+            urlencode("tags").'='.urlencode($this->país.",".$this->capital),
+            urlencode("per_page").'='.urlencode("10"),
+            urlencode("page").'='.urlencode("1"),
+            urlencode("format").'='. urlencode("json"),
+            urlencode("nojsoncallback").'='.urlencode("1"),
+        );
+        $url = "https://www.flickr.com/services/rest/?".implode('&', $params);
+        $response = file_get_contents($url);
+        $json = json_decode($response);
+        echo "<section><h3>Imagenes de ".$this->capital.", ".$this->país.": </h3>";
+        for($i=0;$i<10;$i++) {
+            $titulo = $json->photos->photo[$i]->title;
+            $URLfoto = "https://live.staticflickr.com/".($json->photos->photo[$i]->server)."/".($json->photos->photo[$i]->id)."_".($json->photos->photo[$i]->secret)."_b.jpg";
+            print "<img alt='".$titulo."' src='".$URLfoto."' />";
+        }
+        echo "</section>";
+    }
+}
+?>
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Javier Carrasco"/>
+    <meta name="description" content="documento con el modelado de los viajes de f1"/>
+    <meta name="keywords" content ="F1,coches,fórmula uno" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <title>F1 Desktop-Viajes</title>
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css"/>
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/viajes.js"></script>
+</head>
+<body>
+    <header>
+        <h1><a href="index.html">F1 Desktop</a></h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="piloto.html">Piloto</a>
+            <a href="noticias.html">Noticias</a>
+            <a href="calendario.html">Calendario</a>
+            <a href="meteorología.html">Meteorología</a>
+            <a href="circuito.html">Circuito</a>
+            <a class="active" href="viajes.php">Viajes</a>
+            <a href="juegos.html">Juegos</a>
+        </nav>
+    </header>
+    <p><a href="index.html">Inicio</a> > Viajes</p>
+    <main>
+        <h2>Viajes</h2>
+        <div id="map"></div>
+        <?php
+            $carrusel = new Carrusel("Beijing","China");
+            $carrusel -> getTenPhotos();
+        ?>
+    </main>
+    <script>
+        var viajes = new Viajes();
+    </script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1Thy6jl0ZgBTk-DldSMQMAKbP0x-1AOg&loading=async&libraries=maps,marker&callback=viajes.initMap"></script>
+    <footer>
+        <p>Javier Carrasco Arango, Universidad de Oviedo</p>
+    </footer>
+</body>
+</html>
