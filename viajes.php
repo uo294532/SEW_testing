@@ -29,7 +29,7 @@ class Carrusel{
             $URLfoto = "https://live.staticflickr.com/".($json->photos->photo[$i]->server)."/".($json->photos->photo[$i]->id)."_".($json->photos->photo[$i]->secret)."_b.jpg";
             print "<img alt='".$titulo."' src='".$URLfoto."' />";
         }
-        echo "</section>";
+        echo "<button>&gt;</button><button>&lt;</button></section>";
     }
 }
 ?>

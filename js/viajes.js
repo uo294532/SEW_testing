@@ -1,6 +1,7 @@
 class Viajes{
     constructor(){
         navigator.geolocation.getCurrentPosition(this.getPosicion.bind(this), this.errorFunction.bind(this));
+        this.setupCarrusel();
     }
     getPosicion(posicion){
         this.mensaje = "Se ha realizado correctamente la petición de geolocalización";
@@ -99,5 +100,34 @@ class Viajes{
                                 'Error: Ha fallado la geolocalización' :
                                 'Error: Su navegador no soporta geolocalización');
         infoWindow.open(mapaDinámico);
+    }
+    setupCarrusel(){
+        this.images = document.querySelectorAll("img");
+        let next = document.querySelector("button:nth-of-type(1)");
+        let previous = document.querySelector("button:nth-of-type(2)");
+        this.slide = 0;
+        this.maxImage = this.images.length-1;
+        next.addEventListener("click",function () {
+            if (this.slide === this.maxImage) {
+                this.slide = 0;
+            } else {
+                this.slide++;
+            }
+            this.updateCarrusel();
+        }.bind(this));
+        previous.addEventListener("click", function () {
+            if (this.slide === 0) {
+                this.slide = this.maxImage;
+            } else {
+                this.slide--;
+            }
+            this.updateCarrusel();
+        }.bind(this));
+    }
+    updateCarrusel(){
+        this.images.forEach((image, indx) => {
+            var trans = 100 * (indx - this.slide);
+            $(image).css('transform', 'translateX(' + trans + '%)')
+        });
     }
 }

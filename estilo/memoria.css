@@ -46,10 +46,3 @@ article[data-state=flip] {
 article img{
     transform: rotateY(180deg);
 }
-@media screen and (max-width: 900px){
-    section{
-        border: 0cap;
-        width:100%;
-        margin:0%;
-    }
-}
