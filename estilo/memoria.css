@@ -1,11 +1,4 @@
 /*Javier Carrasco Arango : UO294532*/
-/*Especificidad (0,0,1)*/
-section{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-}
 /*Especificidad (0,0,2)*/
 section > h3{
     width: 100%;
@@ -37,6 +30,7 @@ article h3,article img{
     backface-visibility: hidden;
     border-radius: 1rem;
     width: 100%;
+    font-size: 1em;
 }
 /*Especificidad (0,1,1)*/
 article[data-state=flip] {
@@ -45,4 +39,7 @@ article[data-state=flip] {
 /*Especificidad (0,0,2)*/
 article img{
     transform: rotateY(180deg);
+}
+section button{
+    width:100%;
 }

@@ -203,7 +203,14 @@ div+section button:nth-of-type(2) {
 div+section button:nth-of-type(1) {
     right: 2%;
 }
-@media screen and (max-width: 900px){
+@media screen and (max-width: 950px){
+    section{
+        border: 0cap;
+        width: 70%;
+        margin: 0% 15%;
+    }
+}
+@media screen and (max-width: 700px){
     section{
         border: 0cap;
         width:100%;

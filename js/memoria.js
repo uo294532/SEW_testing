@@ -151,6 +151,6 @@ class Memoria{
             article.appendChild(image);
             section.appendChild(article);
         }
-        document.body.appendChild(section);
+        document.querySelector("main").appendChild(section);
     }
 }

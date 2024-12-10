@@ -32,6 +32,35 @@ class Carrusel{
         echo "<button>&gt;</button><button>&lt;</button></section>";
     }
 }
+class Moneda{
+    protected $monedaLocal;
+    protected $monedaDestino;
+
+    public function __construct(String $monedaLocal, String $monedaDestino){
+        $this->monedaLocal=$monedaLocal;
+        $this->monedaDestino=$monedaDestino;
+    }
+    public function getExchangeInfo(){
+        $url = "https://openexchangerates.org/api/latest.json?app_id=1667fb91b5c8467091c95908425a3e5c&symbols=".$this->monedaLocal.",".$this->monedaDestino;
+        $headers = [
+            "Accept: application/json",
+        ];
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        $response = curl_exec($ch);
+        curl_close($ch);
+        $this->showExchangeRate($response);
+    }
+    private function showExchangeRate(String $response){
+        $json = json_decode($response,true);
+        $rates = $json["rates"];
+        $to=$rates[$this->monedaDestino];
+        $from=$rates[$this->monedaLocal];
+        echo "<section><h3>Cambio de moneda:</h3><p>1 ".$this->monedaLocal." = ".round($to/$from,6)." ".$this->monedaDestino."</p></section>";
+    }
+}
 ?>
 <!DOCTYPE HTML>
 <html lang="es">
@@ -68,6 +97,8 @@ class Carrusel{
         <?php
             $carrusel = new Carrusel("Beijing","China");
             $carrusel -> getTenPhotos();
+            $currency = new Moneda("EUR","CNY");
+            $currency -> getExchangeInfo();
         ?>
     </main>
     <script>
