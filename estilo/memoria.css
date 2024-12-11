@@ -7,7 +7,7 @@ section > h3{
 }
 /*Especificidad (0,0,1)*/
 article{
-    padding: 16.5% 11%;
+    padding: 14.5% 11%;
     margin:0.2em;
     border: 0.1cap solid #176baf;
     border-radius: 0.6cap;
