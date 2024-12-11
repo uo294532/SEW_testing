@@ -43,7 +43,6 @@ class País{
                 $("main").append($("<p></p>").text("Could not fetch wheather data."))
             }
         }).done(function(data){
-            console.log(data);
             let days= [];
             $("time",data).each(function() {
                 let article ={};

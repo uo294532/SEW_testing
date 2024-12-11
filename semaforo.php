@@ -75,6 +75,7 @@ class Record{
         <li><a href="memoria.html">Juego de memoria</a></li>
         <li><a href="semaforo.php">Juego de reacción</a></li>
         <li><a href="api.html">Juego de escritura</a></li>
+        <li><a href="php/fantasyInicio.php">Juego de f1 fantasy</a></li>
     </ul>
     <main>
         <script>

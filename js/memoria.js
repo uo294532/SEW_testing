@@ -62,21 +62,25 @@ class Memoria{
         this.addEventListeners();
     }
     addHelp(){
-        let section = document.querySelector("body section");
+        let h3 = document.querySelector("section h3");
         let helpButton = document.createElement("button");
         helpButton.textContent="Cómo jugar?";
         helpButton.onclick=this.showHelp.bind(this);
-        section.appendChild(helpButton);
+        h3.after(helpButton);
     }
     showHelp(){
         let dialog = document.querySelector("dialog");
         if(dialog===null){
             dialog=document.createElement("dialog");
-            let help = document.createElement("p");
-            help.textContent="Para completar el juego, pulsa las tarjetas para darles la vuelta, y haz todas las parejas. Solo puedes tener dos bocarriba al mismo tiempo, asi que recuérdalas bien!";
-            dialog.appendChild(help);
+            let help = `<h3>Reglas del juego de memoria</h3>
+            <p>En la pantalla aparecen 12 cartas que por un lado tienen "Tarjeta de memoria" y por otro lado una imagen.
+            Esas 12 cartas forman 6 parejas, puesto que las imagenes están repetidas, cada imagen aparece dos veces.</p>
+            <p>Solo puedes tener dos cartas boca arriba al mismo tiempo, sin contar las parejas ya hechas, asi que necesitarás recordar dónde están las parejas, 
+            y si te equivocas, se volverán a poner boca abajo.</p>
+            <p>El objetivo del juego, es mostrar todas las parejas, pulsando cada carta y su pareja para voltearlas.</p>`;
+            dialog.insertAdjacentHTML("beforeend",help);
             let dialogButton=document.createElement("button");
-            dialogButton.textContent="Close";
+            dialogButton.textContent="Cerrar";
             dialog.appendChild(dialogButton);
             document.body.appendChild(dialog);
             document.querySelector("dialog button").onclick=() => document.querySelector("dialog").close();

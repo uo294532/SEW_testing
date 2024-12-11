@@ -113,9 +113,13 @@ nav a{
     background-color: #ba4a00;
     border: 0.1rem solid #8e3900;
     border-radius: 1.5cap;
-    padding: 1cap;
+    padding: 1em;
     margin: 0.2cap;
     line-height: 1.5em;
+}
+/*Especificidad (0,0,1)*/
+li {
+    padding: 1em;
 }
 /*Especificidad (0,1,1)*/
 a.active{
@@ -207,6 +211,7 @@ div+section button:nth-of-type(1) {
     section{
         border: 0cap;
         width: 70%;
+        margin: 0% 15%;
         margin: 0% 15%;
     }
 }
